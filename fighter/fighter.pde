@@ -162,7 +162,7 @@ Timer t;
 Rope r1;
 Akawan kimura;
 Boudaisei []mob;
-int num=10;
+int num=50;
 void setup() {
   size(800, 800);
   r1=new Rope(400, 800, 0, 100);
