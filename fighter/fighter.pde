@@ -224,6 +224,7 @@ void draw() {
     text("Point:"+count1, 0, 0);
     
     if (count1>=num) {
+      state=3;
       t.start();
     }
     
