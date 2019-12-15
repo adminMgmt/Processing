@@ -1,4 +1,4 @@
-# FighterV2.0
+# FighterV1.0
 
 ### Speed setting
 ```java
