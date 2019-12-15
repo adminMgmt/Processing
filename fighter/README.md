@@ -1,15 +1,15 @@
 # Fighter
 
-### 速度設定
+### Speed setting
 ```java
 r1.move_up(10); //L202
 ```
 
-### 時間制限
+### Time limit
 ```java
 if(t.getElapsedTime()>10000){ //240
 ```
-### # of 戦闘機
+### # of fighters
 ```java
-int num=10;//L165
+int num=50; //L165
 ```
