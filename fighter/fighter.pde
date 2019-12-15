@@ -163,6 +163,10 @@ Rope r1;
 Akawan kimura;
 Boudaisei []mob;
 int num=50;
+int count1;
+int state=0;
+boolean tReset = true;
+
 void setup() {
   size(800, 800);
   r1=new Rope(400, 800, 0, 100);
@@ -171,13 +175,6 @@ void setup() {
   t = new Timer();
   t.start();
 }
-
-
-//int count1=0;
-int count2;
-int count3;
-int state=0;
-boolean tReset = true;
 
 void draw() {
   switch(state) {
@@ -190,7 +187,7 @@ void draw() {
     if (mousePressed)
     {
       state=1;
-      count2=0;
+      count1=0;
       for (int i=0; i<num; i++) {
         mob[i]=new Boudaisei((int)random(0, 400), (int)random(0, 400), (int)random(-5, 5), (int)random(-5, 5));
         mob[i].visible=true;
@@ -201,43 +198,36 @@ void draw() {
     background(255);
     r1.move_up(10);
     r1.output();
+    kimura.outputMouse();
+    
     for (int i=0; i<num; i++) {
       mob[i].move();
       mob[i].output();
     }
-    kimura.outputMouse();
-    /*for (int i=0; i<num; i++) {
-     if (kimura.isHit(mob[i])==true) {
-     mob[i].speedX=0;
-     mob[i].speedY=0;
-     }
-     if(mob[i].visible==true){
-     count1++;
-     }
-     mob[i].visible=false;
-     }*/
+
     for (int i=0; i<num; i++) {
       if (r1.isHit(mob[i])==true && mob[i].visible==true) {
         mob[i].speedX=0;
         mob[i].speedY=0;
         mob[i].visible=false;
-        count2++;
+        count1++;
       }
     }
-
-    count3=/*count1+*/count2;
 
     if (mousePressed) {
       r1=new Rope(mouseX, mouseY);
     }
+    
     textAlign(LEFT, TOP);
     textSize(50);
-    text("Point:"+count3, 0, 0);
-    if (count2>=num) {
+    text("Point:"+count1, 0, 0);
+    
+    if (count1>=num) {
       state=0;
       t.start();
     }
-    if(t.getElapsedTime()>10000){
+    
+    if(t.getElapsedTime()>20000){
       state=2;
       t.start();
     }
@@ -254,6 +244,4 @@ void draw() {
   default:
   }
 }
-
-
 
