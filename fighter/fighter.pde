@@ -194,6 +194,7 @@ void draw() {
       }
     }
     break;
+    
   case 1:
     background(255);
     r1.move_up(10);
@@ -223,7 +224,6 @@ void draw() {
     text("Point:"+count1, 0, 0);
     
     if (count1>=num) {
-      state=0;
       t.start();
     }
     
@@ -232,15 +232,26 @@ void draw() {
       t.start();
     }
     break;
+    
   case 2:
     background(0);
     textAlign(CENTER, CENTER);
     text("Game Over", width/2, height/2);
     if (mousePressed) {
-      state=1;
+      state=0;
       t.start();
     }
     break;
+  case 3:
+    background(0);
+    textAlign(CENTER, CENTER);
+    text("Success!", width/2, height/2);
+    if (mousePressed) {
+      state=0;
+      t.start();
+    }
+    break;
+    
   default:
   }
 }
