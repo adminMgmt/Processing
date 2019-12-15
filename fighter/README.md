@@ -2,14 +2,14 @@
 
 ### Speed setting
 ```java
-r1.move_up(10); //L202
+r1.move_up(10);
 ```
 
 ### Time limit
 ```java
-if(t.getElapsedTime()>10000){ //240
+if(t.getElapsedTime()>20000){
 ```
 ### # of fighters
 ```java
-int num=50; //L165
+int num=50;
 ```
