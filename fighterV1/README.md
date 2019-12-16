@@ -7,7 +7,7 @@ r1.move_up(10);
 
 ### Time limit
 ```java
-if(t.getElapsedTime()>20000){
+int timeLimit = 20000; //ms
 ```
 ### # of fighters
 ```java
