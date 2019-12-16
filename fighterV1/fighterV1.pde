@@ -32,6 +32,11 @@ class Timer {
   int second(int ct) {
     return ct/1000;
   }
+  
+  String tLim(){
+    int x = timeLimit-getElapsedTime();
+    return Integer.toString(second(x))+"."+Integer.toString(millisecond(x)/10);
+  }
 }
 
 class Boudaisei {
@@ -165,6 +170,7 @@ Boudaisei []mob;
 int num=50;
 int count1;
 int state=0;
+int timeLimit = 20000; //ms
 boolean tReset = true;
 
 void setup() {
@@ -186,11 +192,13 @@ void draw() {
     text("Please click mouse", width/2, height/2);
     if (mousePressed)
     {
-      state=1;
-      count1=0;
-      for (int i=0; i<num; i++) {
-        mob[i]=new Boudaisei((int)random(0, 400), (int)random(0, 400), (int)random(-5, 5), (int)random(-5, 5));
-        mob[i].visible=true;
+      if(t.getElapsedTime()>2000){
+        state=1;
+        count1=0;
+        for (int i=0; i<num; i++) {
+          mob[i]=new Boudaisei((int)random(0, 400), (int)random(0, 400), (int)random(-5, 5), (int)random(-5, 5));
+          mob[i].visible=true;
+        }
       }
     }
     break;
@@ -221,14 +229,14 @@ void draw() {
     
     textAlign(LEFT, TOP);
     textSize(50);
-    text("Point:"+count1, 0, 0);
+    text("Point:"+count1+"/"+num+" "+t.tLim(), 0, 0);
     
     if (count1>=num) {
       state=3;
       t.start();
     }
     
-    if(t.getElapsedTime()>20000){
+    if(t.getElapsedTime()>timeLimit){
       state=2;
       t.start();
     }
@@ -239,8 +247,10 @@ void draw() {
     textAlign(CENTER, CENTER);
     text("Game Over", width/2, height/2);
     if (mousePressed) {
-      state=0;
-      t.start();
+      if(t.getElapsedTime()>2000){
+        state=0;
+        t.start();
+      }
     }
     break;
   case 3:
@@ -248,8 +258,10 @@ void draw() {
     textAlign(CENTER, CENTER);
     text("Success!", width/2, height/2);
     if (mousePressed) {
-      state=0;
-      t.start();
+      if(t.getElapsedTime()>2000){
+        state=0;
+        t.start();
+      }
     }
     break;
     
