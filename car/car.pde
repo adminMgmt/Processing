@@ -4,8 +4,8 @@ class Car
   int ypos;
   int xspeed;
   int yspeed;
-  PImage carImg = loadImage("carImg.jpg");
-  boolean visible = true;
+  PImage carImg = loadImage("carImg.png");
+  boolean visible = false;
   
   Car()
   {
@@ -46,11 +46,7 @@ class MyCar extends Car {
     ypos = mouseY;
     xspeed = (int)random(-5, 5);
     yspeed = (int)random(-5, 5);
-  }
-  void mv()
-  {
-    move();
-    output();
+    visible = true;
   }
 }
 
@@ -76,7 +72,8 @@ void draw()
   }
   background(255);
   for (int i=0; i<num; i++) {
-      mycar[i].mv();
+      mycar[i].move();
+      mycar[i].output();
   }
 }
 
