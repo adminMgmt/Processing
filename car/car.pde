@@ -27,6 +27,10 @@ class Car
   {
     xpos += xspeed;
     ypos += yspeed;
+    if (xpos<0)xspeed=xspeed*-1;
+    if (ypos<0)yspeed=yspeed*-1;
+    if (xpos>width-50)xspeed=xspeed*-1;
+    if (ypos>width-50)yspeed=yspeed*-1;
   }
   
   void output()
