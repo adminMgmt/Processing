@@ -9,6 +9,10 @@ class Car
   
   Car()
   {
+    xpos = 0;
+    ypos = 0;
+    xspeed = 0;
+    xspeed = 0;
   }
   
   Car(int xpos, int ypos, int xspeed, int yspeed)
@@ -38,14 +42,18 @@ class MyCar extends Car {
   }
   void init()
   {
-    super.xpos = mouseX;
-    super.ypos = mouseY;
-    super.xspeed = (int)random(-5, 5);
-    super.yspeed = (int)random(-5, 5);
+    xpos = mouseX;
+    ypos = mouseY;
+    xspeed = (int)random(-5, 5);
+    yspeed = (int)random(-5, 5);
+  }
+  void mv()
+  {
+    move();
+    output();
   }
 }
 
-Car []car;
 MyCar []mycar;
 int num=10;
 
@@ -54,22 +62,21 @@ void setup()
   size(400, 400);
   frameRate(30);
   mycar = new MyCar[num];
-  background(255);
-  if (mousePressed)
-  {
-    for (int i=0; i<num; i++) {
+  for (int i=0; i<num; i++) {
       mycar[i] = new MyCar();
-      mycar[i].init();
-    }
   }
 }
 
 void draw()
 {
+  if(mousePressed){
+    for (int i=0; i<num; i++) {
+      mycar[i].init();
+    }
+  }
   background(255);
   for (int i=0; i<num; i++) {
-      mycar[i].move();
-      mycar[i].output();
+      mycar[i].mv();
   }
 }
 
